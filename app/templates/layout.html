@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Research Impact Advisor</title>
+
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+<style>
+
+body{
+
+margin:0;
+
+background:#f4f6f9;
+
+}
+
+.sidebar{
+
+width:250px;
+
+height:100vh;
+
+position:fixed;
+
+background:#1f2937;
+
+color:white;
+
+padding-top:20px;
+
+}
+
+.sidebar h3{
+
+text-align:center;
+
+margin-bottom:30px;
+
+}
+
+.sidebar a{
+
+display:block;
+
+padding:15px 25px;
+
+text-decoration:none;
+
+color:white;
+
+}
+
+.sidebar a:hover{
+
+background:#374151;
+
+}
+
+.content{
+
+margin-left:250px;
+
+padding:30px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h3>RIA</h3>
+
+<a href="/">🏠 Dashboard</a>
+
+<a href="/projects">📁 Project Manager</a>
+
+<a href="/pipelines">⚙ Pipeline Manager</a>
+
+<a href="/tools">🛠 Tool Manager</a>
+
+<a href="/databases">🗄 Reference Database Manager</a>
+
+<a href="/latest_versions">📦 Latest Version Repository</a>
+
+<a href="/updates">🔄 Update Checker</a>
+
+</div>
+
+<div class="content">
+
+{% block content %}
+
+{% endblock %}
+
+</div>
+
+</body>
+
+</html>

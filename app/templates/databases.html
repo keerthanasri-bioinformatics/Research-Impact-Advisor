@@ -1,0 +1,83 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+<h2>Reference Database Manager</h2>
+
+<a href="/databases/new" class="btn btn-success">
+
++ Add Database
+
+</a>
+
+</div>
+
+<div class="card shadow">
+
+<table class="table table-bordered table-hover">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>ID</th>
+
+<th>Pipeline</th>
+
+<th>Database</th>
+
+<th>Version</th>
+
+<th>Release Date</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for database in databases %}
+
+<tr>
+
+<td>{{ database.id }}</td>
+
+<td>{{ database.pipeline.pipeline_name }}</td>
+
+<td>{{ database.database_name }}</td>
+
+<td>{{ database.version }}</td>
+
+<td>{{ database.release_date }}</td>
+
+<td>
+
+<a
+href="/databases/delete/{{ database.id }}"
+class="btn btn-danger btn-sm">
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Create New Project</h2>
+
+<form method="POST">
+
+<div class="mb-3">
+<label>Project Name</label>
+<input class="form-control" name="project_name" required>
+</div>
+
+<div class="mb-3">
+<label>Researcher</label>
+<input class="form-control" name="researcher">
+</div>
+
+<div class="mb-3">
+<label>Organization</label>
+<input class="form-control" name="organization">
+</div>
+
+<div class="mb-3">
+<label>Project Type</label>
+<input class="form-control" name="project_type">
+</div>
+
+<div class="mb-3">
+<label>Organism</label>
+<input class="form-control" name="organism">
+</div>
+
+<div class="mb-3">
+<label>Description</label>
+<textarea class="form-control" name="description"></textarea>
+</div>
+
+<button class="btn btn-success">
+Save Project
+</button>
+
+</form>
+
+{% endblock %}

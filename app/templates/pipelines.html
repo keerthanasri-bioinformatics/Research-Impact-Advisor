@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="d-flex justify-content-between mb-3">
+
+<h2>Pipeline Manager</h2>
+
+<a href="/pipelines/new"
+class="btn btn-success">
+
++ Add Pipeline
+
+</a>
+
+</div>
+
+<table class="table table-bordered">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>ID</th>
+
+<th>Project</th>
+
+<th>Pipeline</th>
+
+<th>Version</th>
+
+<th>Description</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for pipeline in pipelines %}
+
+<tr>
+
+<td>{{ pipeline.id }}</td>
+
+<td>{{ pipeline.project.project_name }}</td>
+
+<td>{{ pipeline.pipeline_name }}</td>
+
+<td>{{ pipeline.version }}</td>
+
+<td>{{ pipeline.description }}</td>
+
+<td>
+
+<a
+href="/pipelines/delete/{{ pipeline.id }}"
+class="btn btn-danger btn-sm">
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}

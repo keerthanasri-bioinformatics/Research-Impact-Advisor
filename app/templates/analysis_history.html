@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="d-flex justify-content-between mb-3">
+
+<h2>Analysis History</h2>
+
+<a href="/updates" class="btn btn-primary">
+
+Run New Analysis
+
+</a>
+
+</div>
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<table class="table table-bordered table-hover">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>ID</th>
+<th>Date</th>
+<th>Project</th>
+<th>Pipeline</th>
+<th>Updates</th>
+<th>Priority</th>
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for analysis in analyses %}
+
+<tr>
+
+<td>{{ analysis.id }}</td>
+
+<td>{{ analysis.analysis_date }}</td>
+
+<td>{{ analysis.project.project_name }}</td>
+
+<td>{{ analysis.pipeline.pipeline_name }}</td>
+
+<td>{{ analysis.updates_found }}</td>
+
+<td>
+
+{% if analysis.priority=="HIGH" %}
+
+<span class="badge bg-danger">HIGH</span>
+
+{% elif analysis.priority=="MEDIUM" %}
+
+<span class="badge bg-warning text-dark">MEDIUM</span>
+
+{% elif analysis.priority=="LOW" %}
+
+<span class="badge bg-primary">LOW</span>
+
+{% else %}
+
+<span class="badge bg-success">NONE</span>
+
+{% endif %}
+
+</td>
+
+<td>
+
+<a
+href="/analysis/{{ analysis.id }}"
+class="btn btn-info btn-sm">
+
+View
+
+</a>
+
+<a
+href="/report/{{ analysis.id }}"
+class="btn btn-success btn-sm">
+
+PDF
+
+</a>
+
+<a
+href="/analysis/delete/{{ analysis.id }}"
+class="btn btn-danger btn-sm"
+onclick="return confirm('Delete this analysis?')">
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+<h2>Latest Version Repository</h2>
+
+<a href="/latest_versions/new" class="btn btn-success">
+
++ Add Latest Version
+
+</a>
+
+</div>
+
+<div class="card shadow">
+
+<table class="table table-bordered table-hover">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>ID</th>
+<th>Software</th>
+<th>Category</th>
+<th>Latest Version</th>
+<th>Release Date</th>
+<th>Source</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for version in versions %}
+
+<tr>
+
+<td>{{ version.id }}</td>
+<td>{{ version.software_name }}</td>
+<td>{{ version.category }}</td>
+<td>{{ version.latest_version }}</td>
+<td>{{ version.release_date }}</td>
+<td>{{ version.source }}</td>
+
+<td>
+
+<a
+href="/latest_versions/delete/{{ version.id }}"
+class="btn btn-danger btn-sm">
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

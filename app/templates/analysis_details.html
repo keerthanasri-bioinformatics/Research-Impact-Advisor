@@ -1,0 +1,151 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="card shadow p-4">
+
+<h2 class="mb-4">
+
+Analysis Details
+
+</h2>
+
+<table class="table table-bordered">
+
+<tr>
+
+<th width="30%">Project</th>
+
+<td>{{ analysis.project.project_name }}</td>
+
+</tr>
+
+<tr>
+
+<th>Pipeline</th>
+
+<td>{{ analysis.pipeline.pipeline_name }}</td>
+
+</tr>
+
+<tr>
+
+<th>Analysis Date</th>
+
+<td>{{ analysis.analysis_date }}</td>
+
+</tr>
+
+<tr>
+
+<th>Updates Found</th>
+
+<td>{{ analysis.updates_found }}</td>
+
+</tr>
+
+<tr>
+
+<th>High Impact</th>
+
+<td>{{ analysis.high_impact }}</td>
+
+</tr>
+
+<tr>
+
+<th>Medium Impact</th>
+
+<td>{{ analysis.medium_impact }}</td>
+
+</tr>
+
+<tr>
+
+<th>Low Impact</th>
+
+<td>{{ analysis.low_impact }}</td>
+
+</tr>
+
+<tr>
+
+<th>Priority</th>
+
+<td>
+
+{% if analysis.priority=="HIGH" %}
+
+<span class="badge bg-danger">
+
+HIGH
+
+</span>
+
+{% elif analysis.priority=="MEDIUM" %}
+
+<span class="badge bg-warning">
+
+MEDIUM
+
+</span>
+
+{% elif analysis.priority=="LOW" %}
+
+<span class="badge bg-primary">
+
+LOW
+
+</span>
+
+{% else %}
+
+<span class="badge bg-success">
+
+NONE
+
+</span>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+<tr>
+
+<th>Recommendation</th>
+
+<td>
+
+{{ analysis.recommendation }}
+
+</td>
+
+</tr>
+
+</table>
+
+<a
+href="/analysis"
+class="btn btn-secondary">
+
+Back
+
+</a>
+
+<a
+href="/report/{{ analysis.id }}"
+class="btn btn-success">
+
+Download PDF
+
+</a>
+
+</div>
+
+</div>
+
+{% endblock %}

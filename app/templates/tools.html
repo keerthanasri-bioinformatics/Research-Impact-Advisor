@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+<h2>Tool Manager</h2>
+
+<a
+href="/tools/new"
+class="btn btn-success">
+
++ Add Tool
+
+</a>
+
+</div>
+
+<div class="card shadow">
+
+<table class="table table-bordered table-hover">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>ID</th>
+
+<th>Pipeline</th>
+
+<th>Tool</th>
+
+<th>Version</th>
+
+<th>Purpose</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for tool in tools %}
+
+<tr>
+
+<td>{{ tool.id }}</td>
+
+<td>{{ tool.pipeline.pipeline_name }}</td>
+
+<td>{{ tool.tool_name }}</td>
+
+<td>{{ tool.version }}</td>
+
+<td>{{ tool.purpose }}</td>
+
+<td>
+
+<a
+href="/tools/delete/{{ tool.id }}"
+class="btn btn-danger btn-sm">
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

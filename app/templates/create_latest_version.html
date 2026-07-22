@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="card shadow p-4">
+
+<h2 class="mb-4">Add Latest Version</h2>
+
+<form method="POST">
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Software Name
+
+</label>
+
+<input
+type="text"
+name="software_name"
+class="form-control"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Category
+
+</label>
+
+<select
+name="category"
+class="form-control"
+required>
+
+<option value="Tool">Tool</option>
+
+<option value="Database">Database</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Latest Version
+
+</label>
+
+<input
+type="text"
+name="latest_version"
+class="form-control"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Release Date
+
+</label>
+
+<input
+type="date"
+name="release_date"
+class="form-control">
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Official Source
+
+</label>
+
+<input
+type="text"
+name="source"
+class="form-control"
+placeholder="https://example.com">
+
+</div>
+
+<button class="btn btn-primary">
+
+Save
+
+</button>
+
+<a
+href="/latest_versions"
+class="btn btn-secondary">
+
+Cancel
+
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,202 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container">
+
+<div class="card shadow p-4">
+
+<h2 class="mb-4">Update Checker</h2>
+
+<form method="POST" action="/updates/analyze">
+
+<div class="mb-3">
+
+<label>Select Pipeline</label>
+
+<select
+name="pipeline_id"
+class="form-control"
+required>
+
+{% for pipeline in pipelines %}
+
+<option value="{{ pipeline.id }}">
+
+{{ pipeline.pipeline_name }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<button class="btn btn-primary">
+
+Analyze Pipeline
+
+</button>
+
+</form>
+
+</div>
+
+{% if results %}
+
+<br>
+
+<div class="card shadow">
+
+<table class="table table-bordered">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>Type</th>
+<th>Name</th>
+<th>Current</th>
+<th>Latest</th>
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for item in results %}
+
+<tr>
+
+<td>{{ item.type }}</td>
+
+<td>{{ item.name }}</td>
+
+<td>{{ item.current }}</td>
+
+<td>{{ item.latest }}</td>
+
+<td>
+
+{% if item.status=="Up-to-date" %}
+
+<span class="badge bg-success">
+
+Up-to-date
+
+</span>
+
+{% else %}
+
+<span class="badge bg-danger">
+
+Outdated
+
+</span>
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+<br>
+
+<div class="card shadow p-4">
+
+<h3>Impact Summary</h3>
+
+<p>
+
+<b>High Impact :</b>
+
+{{ impact.high }}
+
+</p>
+
+<p>
+
+<b>Medium Impact :</b>
+
+{{ impact.medium }}
+
+</p>
+
+<p>
+
+<b>Low Impact :</b>
+
+{{ impact.low }}
+
+</p>
+
+{% if impact.priority=="HIGH" %}
+
+<h4 class="text-danger">
+
+Priority : HIGH
+
+</h4>
+
+{% elif impact.priority=="MEDIUM" %}
+
+<h4 class="text-warning">
+
+Priority : MEDIUM
+
+</h4>
+
+{% elif impact.priority=="LOW" %}
+
+<h4 class="text-primary">
+
+Priority : LOW
+
+</h4>
+
+{% else %}
+
+<h4 class="text-success">
+
+Priority : NONE
+
+</h4>
+
+{% endif %}
+
+<hr>
+
+<h4>
+
+Recommendations
+
+</h4>
+
+<ul>
+
+{% for rec in impact.recommendations %}
+
+<li>{{ rec }}</li>
+
+{% endfor %}
+
+</ul>
+
+</div>
+
+{% endif %}
+
+</div>
+
+{% endblock %}
